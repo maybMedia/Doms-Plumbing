@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Linting
+
+Run `npm run lint` to check the entire project. ESLint errors and warnings fail the check.
+Installing dependencies with `npm install` or `npm ci` also installs the Husky
+pre-commit hook, which runs the same check before each commit.
+
+The GitHub Actions `Lint` workflow runs on pushes, pull requests, and merge queue
+checks. The active [Require lint before merging](https://github.com/maybMedia/Doms-Plumbing/rules/28158760)
+ruleset requires the GitHub Actions `Lint` check on the default branch, with no
+bypass actors. Push changes to a feature branch and open a pull request; lint must
+pass before merging.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
