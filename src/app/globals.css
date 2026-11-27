@@ -20,12 +20,14 @@
   --action: #086aa5;
   --action-hover: #075384;
   --on-action: #ffffff;
+  --quote-water-back: #0d7097;
+  --quote-water-front: #044563;
   --nav-active: #173f56;
   --nav-active-ink: #ffffff;
-  --emergency-background: #143b53;
-  --emergency-ink: #f3faff;
-  --emergency-muted: #c2dce9;
-  --emergency-accent: #a7e0f3;
+  --contact-strip-background: #143b53;
+  --contact-strip-ink: #f3faff;
+  --contact-strip-muted: #c2dce9;
+  --contact-strip-accent: #a7e0f3;
   --footer-background: #eaf2f7;
   --water-back: #2184b7;
   --water-front: #075f93;
@@ -53,12 +55,14 @@
   --action: #85d7f0;
   --action-hover: #b5ebfa;
   --on-action: #092739;
+  --quote-water-back: #9ce1f3;
+  --quote-water-front: #bdebf7;
   --nav-active: #92d8ee;
   --nav-active-ink: #0a2636;
-  --emergency-background: #19445b;
-  --emergency-ink: #f0faff;
-  --emergency-muted: #bdd9e7;
-  --emergency-accent: #95e4f8;
+  --contact-strip-background: #19445b;
+  --contact-strip-ink: #f0faff;
+  --contact-strip-muted: #bdd9e7;
+  --contact-strip-accent: #95e4f8;
   --footer-background: #071019;
   --water-back: #2d9dc7;
   --water-front: #9ae8f9;
@@ -227,36 +231,36 @@ svg {
   width: 17px;
   height: 17px;
 }
-.emergency-wrap {
+.contact-wrap {
   background: #17232d;
   color: #fff;
 }
-.emergency-strip {
+.contact-strip {
   display: flex;
   gap: 32px;
   align-items: center;
   padding-block: 25px;
 }
-.emergency-heading {
+.contact-heading {
   display: flex;
   gap: 13px;
   align-items: center;
 }
-.emergency-heading > svg {
+.contact-heading > svg {
   color: #7dc6ff;
   width: 21px;
   height: 21px;
 }
-.emergency-heading strong {
+.contact-heading strong {
   font-size: 17px;
   font-weight: 600;
 }
-.emergency-description {
+.contact-description {
   color: #bdcbd5;
   margin-left: auto;
   font-size: 15px;
 }
-.emergency-strip > a {
+.contact-strip > a {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -265,10 +269,10 @@ svg {
   line-height: 1;
   letter-spacing: 0.015em;
 }
-.emergency-strip > a:hover {
+.contact-strip > a:hover {
   color: #7dc6ff;
 }
-.emergency-strip > a > svg {
+.contact-strip > a > svg {
   width: 20px;
   height: 20px;
 }
@@ -449,7 +453,7 @@ svg {
 .contact-links p {
   color: var(--muted);
 }
-.quote-copy .urgent-note {
+.quote-copy .contact-note {
   font-size: 14px;
   margin-top: 26px;
   max-width: 260px;
@@ -690,10 +694,10 @@ textarea::placeholder {
   .quote-form {
     padding: 28px;
   }
-  .emergency-strip {
+  .contact-strip {
     gap: 22px;
   }
-  .emergency-description {
+  .contact-description {
     font-size: 14px;
   }
 }
@@ -701,10 +705,10 @@ textarea::placeholder {
   .container {
     width: calc(100% - 48px);
   }
-  .emergency-description {
+  .contact-description {
     display: none;
   }
-  .emergency-strip > a {
+  .contact-strip > a {
     margin-left: auto;
   }
   .section-space {
@@ -756,22 +760,22 @@ textarea::placeholder {
   html {
     scroll-padding-top: 24px;
   }
-  .emergency-strip {
+  .contact-strip {
     padding-block: 22px;
     flex-wrap: wrap;
     gap: 10px 20px;
   }
-  .emergency-heading {
+  .contact-heading {
     gap: 10px;
   }
-  .emergency-heading strong {
+  .contact-heading strong {
     font-size: 15px;
   }
-  .emergency-strip > a {
+  .contact-strip > a {
     font-size: 26px;
     gap: 10px;
   }
-  .emergency-strip > a > svg {
+  .contact-strip > a > svg {
     display: none;
   }
   .section-space {
@@ -829,7 +833,7 @@ textarea::placeholder {
   .contact-links {
     margin-top: 24px;
   }
-  .quote-copy .urgent-note {
+  .quote-copy .contact-note {
     margin-top: 20px;
     max-width: none;
   }
@@ -859,17 +863,17 @@ textarea::placeholder {
   .container {
     width: calc(100% - 40px);
   }
-  .emergency-strip {
+  .contact-strip {
     gap: 11px;
     justify-content: space-between;
   }
-  .emergency-heading > svg {
+  .contact-heading > svg {
     display: none;
   }
-  .emergency-heading strong {
+  .contact-heading strong {
     font-size: 14px;
   }
-  .emergency-strip > a {
+  .contact-strip > a {
     font-size: 24px;
   }
   .section-heading > div {
@@ -1026,6 +1030,23 @@ textarea::placeholder {
 .menu-toggle {
   display: none;
 }
+.menu-line {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    opacity 160ms ease;
+}
+.menu-toggle[aria-expanded="true"] .menu-line-top {
+  transform: translateY(6px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .menu-line-middle {
+  opacity: 0;
+  transform: scaleX(0.3);
+}
+.menu-toggle[aria-expanded="true"] .menu-line-bottom {
+  transform: translateY(-6px) rotate(-45deg);
+}
 .hero-shell {
   margin: 16px;
   border-radius: 24px;
@@ -1085,12 +1106,77 @@ textarea::placeholder {
   border-radius: 0;
   padding-inline: 14px;
 }
-.hero-quote-card .button:hover {
-  background: #005994;
-  transform: translateY(-2px);
+.hero-quote-card .quote-water-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: none;
 }
-.hero-quote-card .button:active {
+.quote-button-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.quote-button-water {
+  position: absolute;
+  z-index: 0;
+  inset: -30px 0 0;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition: transform 420ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-quote-card .quote-water-wave {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 200%;
+  height: 100%;
+  max-width: none;
+  fill: currentColor;
+  animation: quote-water-drift 1600ms linear infinite paused;
+}
+.hero-quote-card .quote-water-back {
+  color: var(--quote-water-back);
+  animation-direction: reverse;
+  animation-duration: 2200ms;
+}
+.quote-water-front {
+  color: var(--quote-water-front);
+}
+.hero-quote-card
+  .quote-water-button:is(:focus-visible, :active)
+  .quote-button-water {
   transform: translateY(0);
+  transition-duration: 900ms;
+}
+.hero-quote-card
+  .quote-water-button:is(:focus-visible, :active)
+  .quote-water-wave {
+  animation-play-state: running;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-quote-card .quote-water-button:hover .quote-button-water {
+    transform: translateY(0);
+    transition-duration: 900ms;
+  }
+  .hero-quote-card .quote-water-button:hover .quote-water-wave {
+    animation-play-state: running;
+  }
+}
+@keyframes quote-water-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-quote-card .quote-button-water {
+    transition: none;
+  }
+  .hero-quote-card .quote-water-wave {
+    animation: none;
+  }
 }
 .hero-support {
   display: grid;
@@ -1204,7 +1290,9 @@ textarea::placeholder {
     display: grid;
   }
   .main-nav {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
@@ -1213,12 +1301,26 @@ textarea::placeholder {
     background: var(--surface);
     color: var(--foreground);
     border-radius: 12px;
+    border: 1px solid var(--line);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.98);
+    transform-origin: top right;
+    clip-path: inset(0 0 100% 0 round 12px);
+    transition:
+      opacity 180ms ease,
+      transform 260ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      clip-path 260ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      visibility 0s linear 260ms;
   }
   .main-nav.is-open {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    animation: reveal 160ms ease-out;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    clip-path: inset(0 round 12px);
+    transition-delay: 0s;
   }
   .main-nav a {
     min-height: 48px;
@@ -1407,7 +1509,6 @@ textarea::placeholder {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-quote-card .button:hover,
   .hero-services-link:hover svg {
     transform: none;
   }
@@ -1508,12 +1609,10 @@ h3 {
   background: var(--action);
   color: var(--on-action);
 }
-.hero-quote-card .button:hover,
 .button-primary:hover {
   background: var(--action-hover);
 }
-.nav-panel,
-.main-nav.is-open {
+.nav-panel {
   border: 1px solid var(--line);
 }
 .main-nav a[aria-current],
@@ -1531,18 +1630,18 @@ h3 {
 .hero-shell :focus-visible {
   outline-color: var(--blue);
 }
-.emergency-wrap {
-  background: var(--emergency-background);
-  color: var(--emergency-ink);
+.contact-wrap {
+  background: var(--contact-strip-background);
+  color: var(--contact-strip-ink);
 }
-.emergency-description {
-  color: var(--emergency-muted);
+.contact-description {
+  color: var(--contact-strip-muted);
 }
-.emergency-heading > svg,
-.emergency-strip > a:hover {
-  color: var(--emergency-accent);
+.contact-heading > svg,
+.contact-strip > a:hover {
+  color: var(--contact-strip-accent);
 }
-.emergency-strip > a {
+.contact-strip > a {
   font-family: var(--font-body), sans-serif;
   font-weight: 700;
   font-size: 24px;
@@ -1655,17 +1754,21 @@ textarea {
   .quote-copy h2 {
     font-size: clamp(1.65rem, 7.5vw, 2rem);
   }
-  .emergency-strip {
+  .contact-strip {
     align-items: center;
   }
-  .emergency-heading strong {
+  .contact-heading strong {
     font-size: 13px;
   }
-  .emergency-strip > a {
+  .contact-strip > a {
     font-size: 20px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .main-nav,
+  .menu-line {
+    transition: none;
+  }
   .hero-title .water-fill {
     animation: none;
     mask-position: 25px 0;

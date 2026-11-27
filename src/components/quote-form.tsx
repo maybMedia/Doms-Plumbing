@@ -137,7 +137,7 @@ export function QuoteForm() {
       </p>
       {business.isDraft && (
         <p className="draft-note">
-          Draft preview: the email address and phone number are samples.
+          Draft preview: the email address is a sample.
         </p>
       )}
       <div className="form-feedback" aria-live="polite" aria-atomic="true">

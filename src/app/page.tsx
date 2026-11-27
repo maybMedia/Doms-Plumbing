@@ -60,9 +60,29 @@ export default function Home() {
                     <br />& surrounding areas
                   </span>
                 </p>
-                <a className="button" href="#quote">
-                  <Icon name="mail" />
-                  Request a quote
+                <a className="button quote-water-button" href="#quote">
+                  <span className="quote-button-water" aria-hidden="true">
+                    <svg
+                      className="quote-water-wave quote-water-back"
+                      viewBox="0 0 480 80"
+                      preserveAspectRatio="none"
+                      focusable="false"
+                    >
+                      <path d="M0 10Q30 2 60 10T120 10T180 10T240 10T300 10T360 10T420 10T480 10V80H0Z" />
+                    </svg>
+                    <svg
+                      className="quote-water-wave quote-water-front"
+                      viewBox="0 0 480 80"
+                      preserveAspectRatio="none"
+                      focusable="false"
+                    >
+                      <path d="M0 17Q30 9 60 17T120 17T180 17T240 17T300 17T360 17T420 17T480 17V80H0Z" />
+                    </svg>
+                  </span>
+                  <span className="quote-button-label">
+                    <Icon name="mail" />
+                    Request a quote
+                  </span>
                 </a>
               </div>
             </div>
@@ -94,14 +114,14 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="emergency-wrap">
-          <div className="emergency-strip container">
-            <div className="emergency-heading">
+        <div className="contact-wrap">
+          <div className="contact-strip container">
+            <div className="contact-heading">
               <Icon name="phone" />
-              <strong>Can’t wait? Give Dom a call.</strong>
+              <strong>Let’s talk plumbing.</strong>
             </div>
-            <span className="emergency-description">
-              Emergency plumbing callouts
+            <span className="contact-description">
+              Repairs, drains & installations
             </span>
             <a href={business.phoneHref}>
               {business.phoneDisplay}
@@ -235,8 +255,8 @@ export default function Home() {
                 {business.area}
               </p>
             </div>
-            <p className="urgent-note">
-              For an urgent job, please call rather than email.
+            <p className="contact-note">
+              Prefer a chat? Give Dom a call to discuss your job.
             </p>
           </div>
           <QuoteForm />
@@ -252,7 +272,7 @@ export default function Home() {
         </div>
         <div className="container footer-bottom">
           <span>© 2026 Dom’s Plumbing Services.</span>
-          <span>Draft preview · Sample contact details and services</span>
+          <span>Created with care by <a href="https://braithwebdesign.site" target="_blank" rel="noopener noreferrer">BraithWebDesign.Site</a></span>
         </div>
       </footer>
     </SiteExperience>

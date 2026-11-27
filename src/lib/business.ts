@@ -1,10 +1,9 @@
-// Replace the sample contact details before publishing.
-// The reserved .example domain cannot receive mail.
+// Shared contact details for the site and quote-email drafts.
 export const business = {
   name: "Dom’s Plumbing Services",
   area: "The Hills District & surrounding areas",
-  phoneDisplay: "02 5550 1234",
-  phoneHref: "tel:+61255501234",
-  email: "hello@domsplumbing.example",
-  isDraft: true,
+  phoneDisplay: "0416 919 066",
+  phoneHref: "tel:+61416919066",
+  email: "domsplumbingservice1@gmail.com",
+  isDraft: false,
 };

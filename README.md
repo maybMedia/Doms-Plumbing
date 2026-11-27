@@ -13,11 +13,11 @@ Open http://localhost:3000. Run `npm run build` for a production build.
 
 ## Business details
 
-Edit `src/lib/business.ts` to replace the sample phone number and email address.
-The quote form opens an email draft and offers a copy fallback; it does not send mail or store enquiries on a server. The `.example` email address is a placeholder and cannot receive mail.
+Contact details are in `src/lib/business.ts`.
+The quote form opens an email draft to the business address and offers a copy fallback; it does not send mail or store enquiries on a server.
 
-Service copy and emergency callouts are sample content approved for this draft.
-Update them before publishing, set `isDraft` to `false`, and review the `robots`
+Service descriptions are sample content approved for this draft.
+Update them before publishing and review the `robots`
 metadata in `src/app/layout.tsx` (currently set to prevent indexing).
 
 ## Design and assets

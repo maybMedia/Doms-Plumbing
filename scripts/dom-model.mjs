@@ -323,26 +323,76 @@ export function createDomModel() {
   box(
     upper,
     red,
-    [0.34, 1.275, frontZ(0.34, 1.275) + 0.066],
-    [0.18, 0.032, 0.016],
+    [0.34, 1.29, frontZ(0.34, 1.29) + 0.066],
+    [0.14, 0.022, 0.016],
     0.008,
-  ).rotation.z = 0.32;
+  ).rotation.z = 0.25;
   box(
     upper,
     metal,
-    [0.42, 1.305, frontZ(0.42, 1.305) + 0.069],
-    [0.057, 0.063, 0.018],
+    [0.408, 1.308, frontZ(0.408, 1.308) + 0.069],
+    [0.043, 0.049, 0.018],
     0.009,
   );
-  for (let mark = 0; mark < 5; mark++) {
-    const x = 0.23 + mark * 0.058;
-    box(
-      upper,
-      teeth,
-      [x, 1.21, frontZ(x, 1.21) + 0.065],
-      [0.034, 0.014, 0.007],
-      0.003,
-    );
+  // Real, raised lettering follows the patch's curve and stays sharp in 3D.
+  const nameTag = group("Dom_NameTag", upper);
+  nameTag.userData.text = "DOM";
+  const letterD = new THREE.Shape();
+  letterD.moveTo(0, 0);
+  letterD.lineTo(0, 1);
+  letterD.lineTo(0.3, 1);
+  letterD.bezierCurveTo(0.57, 1, 0.7, 0.84, 0.7, 0.5);
+  letterD.bezierCurveTo(0.7, 0.16, 0.57, 0, 0.3, 0);
+  letterD.closePath();
+  const dHole = new THREE.Path();
+  dHole.moveTo(0.18, 0.18);
+  dHole.lineTo(0.3, 0.18);
+  dHole.bezierCurveTo(0.45, 0.18, 0.52, 0.28, 0.52, 0.5);
+  dHole.bezierCurveTo(0.52, 0.72, 0.45, 0.82, 0.3, 0.82);
+  dHole.lineTo(0.18, 0.82);
+  dHole.closePath();
+  letterD.holes.push(dHole);
+  const letterO = new THREE.Shape();
+  letterO.absellipse(0.35, 0.5, 0.35, 0.5, 0, Math.PI * 2, true);
+  const oHole = new THREE.Path();
+  oHole.absellipse(0.35, 0.5, 0.17, 0.32, 0, Math.PI * 2, false);
+  letterO.holes.push(oHole);
+  const letterM = new THREE.Shape();
+  const mOutline = [
+    [0, 0],
+    [0, 1],
+    [0.18, 1],
+    [0.4, 0.58],
+    [0.62, 1],
+    [0.8, 1],
+    [0.8, 0],
+    [0.62, 0],
+    [0.62, 0.65],
+    [0.4, 0.27],
+    [0.18, 0.65],
+    [0.18, 0],
+  ];
+  letterM.moveTo(...mOutline[0]);
+  for (const point of mOutline.slice(1)) letterM.lineTo(...point);
+  letterM.closePath();
+  for (const [letter, outline, start] of [
+    ["D", letterD, 0],
+    ["O", letterO, 0.83],
+    ["M", letterM, 1.66],
+  ]) {
+    const geometry = new THREE.ExtrudeGeometry(outline, {
+      depth: 0.006,
+      bevelEnabled: false,
+      curveSegments: 8,
+    });
+    const points = geometry.attributes.position;
+    for (let i = 0; i < points.count; i++) {
+      const x = 0.215 + (points.getX(i) + start) * (0.27 / 2.46);
+      const y = 1.173 + points.getY(i) * 0.068;
+      points.setXYZ(i, x, y, frontZ(x, y) + 0.065 + points.getZ(i));
+    }
+    geometry.computeVertexNormals();
+    mesh(geometry, teeth, nameTag).name = "Dom_NameTag_" + letter;
   }
 
   // Leather tool belt, buckle and a compact red pipe wrench.

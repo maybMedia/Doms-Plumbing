@@ -17,7 +17,7 @@ const displayFont = localFont({
 export const metadata: Metadata = {
   title: "Dom’s Plumbing Services | The Hills District",
   description:
-    "Plumbing repairs, blocked drains, hot water and emergency callouts in the Hills District and surrounding areas. Request a quote from Dom’s Plumbing Services.",
+    "Plumbing repairs, blocked drains, hot water and fixture installations in the Hills District and surrounding areas. Request a quote from Dom’s Plumbing Services.",
   robots: { index: false, follow: false },
   icons: {
     icon: [
