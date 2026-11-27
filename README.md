@@ -4,6 +4,8 @@ A draft Next.js landing page for the Hills District and surrounding areas.
 
 ## Run locally
 
+Use Node.js 24 LTS (also used by CI).
+
 ```bash
 npm install
 npm run dev
@@ -36,7 +38,20 @@ metadata in `src/app/layout.tsx` (currently set to prevent indexing).
 Run `npm run lint` to check the entire project. Errors and warnings fail the check.
 Installing dependencies also installs the Husky pre-commit hook.
 
+ESLint 10 is supported by `eslint-config-next` 16.4.6. The scoped npm overrides
+keep its React, import and accessibility plugins on the project's ESLint version
+while their peer dependency ranges still stop at ESLint 9. Remove these overrides
+when those plugins declare ESLint 10 support.
+
 The GitHub Actions `Lint` workflow runs on pushes, pull requests, and merge queue checks for feedback. The GitHub lint ruleset is disabled, so direct pushes to `main` are allowed without waiting for CI.
+
+## Vercel builds
+
+`vercel.json` removes `npm_config_cache_dir` (and its uppercase variant) before
+installation and building. This unsupported npm setting can be injected by the
+[Vercel build environment](https://community.vercel.com/t/npm-warn-unknown-env-config-cache-dir-caused-by-vercel-build-environment/51678).
+The supported npm cache setting, `npm_config_cache`, is preserved. Local npm
+commands and GitHub Actions use their normal environment.
 
 ## Hero and logo preparation
 
